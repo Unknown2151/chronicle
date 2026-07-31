@@ -72,7 +72,7 @@ export default auth(async (req) => {
 
     // Redirect unauthenticated users trying to access protected routes
     if (isProtectedRoute && !isLoggedIn) {
-        return NextResponse.redirect(new URL("/login", req.nextUrl));
+        return NextResponse.redirect(new URL("/login", req.nextUrl.origin));
     }
 
     // Redirect authenticated users away from auth pages (login/verify) to their dashboard
