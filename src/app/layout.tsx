@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import * as Sentry from "@sentry/nextjs";
+import { Header } from "@/components/Header";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
       <html lang="en">
       <body className={`${inter.variable} ${merriweather.variable} font-sans bg-[#f4f4f0] text-[#1c1c1c] antialiased`}>
+      <Header />
       {children}
       </body>
       </html>
