@@ -13,14 +13,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     session: { strategy: "jwt" },
     providers: [
         Resend({
-            apiKey: "mock-key",
-            from: "noreply@chronicle.app",
-            sendVerificationRequest({ identifier, url }) {
-                console.log("\n=======================================================");
-                console.log(`📧 MAGIC LOGIN LINK FOR: ${identifier}`);
-                console.log(`🔗 CLICK HERE: ${url}`);
-                console.log("=======================================================\n");
-            },
+            // Pulls the real API key from Vercel Environment Variables
+            apiKey: process.env.RESEND_API_KEY,
+            // Pulls the verified sender email from Vercel
+            from: process.env.EMAIL_FROM,
         }),
     ],
     callbacks: {
