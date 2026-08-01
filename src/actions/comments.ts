@@ -2,11 +2,10 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import {invalidateCache} from "@/lib/cache";
+import {prisma} from "@/lib/db";
 
-const prisma = new PrismaClient();
 
 export async function createComment(
     postId: string,

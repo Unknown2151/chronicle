@@ -1,11 +1,10 @@
 // src/lib/auth.ts
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
 import { authConfig } from "./auth.config";
 import Resend from "next-auth/providers/resend";
+import {prisma} from "@/lib/db";
 
-const prisma = new PrismaClient();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig,

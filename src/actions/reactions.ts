@@ -2,12 +2,11 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { ALLOWED_REACTIONS, AllowedReaction } from "@/lib/constants";
 import {invalidateCache} from "@/lib/cache";
+import {prisma} from "@/lib/db";
 
-const prisma = new PrismaClient();
 
 export async function toggleReaction(
     postId: string | undefined,
